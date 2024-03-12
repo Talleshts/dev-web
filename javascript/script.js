@@ -9,7 +9,7 @@ console.log("SOMA FAKE: " + numeroA + numeroFake);
 console.log("SUBTRAÇÂO FAKE: " + numeroA - numeroFake);
 console.log("DIVISÃO FAKE: " + numeroB - numeroFake);
 console.log("MULTIPLICAÇÃO FAKE: " + numeroA * numeroFake);
-log
+console.log(soma);
 
 document.write("URRRRRRRRRRRRRRRRRUUUUUUUUL")
 alert("Eai")
