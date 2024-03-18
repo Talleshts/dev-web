@@ -1,4 +1,4 @@
-- Preview do módulo (JS)
+## Preview do módulo (JS)
     - Estrutura
     - Arrays
     - Funções
