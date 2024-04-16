@@ -1,0 +1,64 @@
+{
+    "lista_de_sites": [
+        {
+            "id": "1",
+            "nome": "Google",
+            "site": "https://www.google.com.br/?hl=pt-BR",
+            "endereco": {
+                "cidade": "Canadá",
+                "estado": "CA"
+            },
+            "produtos": [
+                {
+                    "nome": "macaco verde",
+                    "preço": 3000
+                },
+                {
+                    "nome": "macaco roxo",
+                    "preço": 3000
+
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "nome": "Portal do Aluno",
+            "site": "https://aluno.ufes.br/",
+            "endereco": {
+                "cidade": "Brasil",
+                "estado": "BR"
+            },
+            "produtos": [
+                {
+                    "nome": "macaco laranja",
+                    "preço": 3000
+                },
+                {
+                    "nome": "macaco vermelho",
+                    "preço": 3000
+
+                }
+            ]
+        },
+        {
+            "id": "3",
+            "nome": "UFES",
+            "site": "https://www.ufes.br/",
+            "endereco": {
+                "cidade": "Espírito Santo",
+                "estado": "ES"
+            },
+            "produtos": [
+                {
+                    "nome": "macaco amarelo",
+                    "preço": 3000
+                },
+                {
+                    "nome": "macaco azul",
+                    "preço": 3000
+
+                }
+            ]
+        }
+    ]
+}
