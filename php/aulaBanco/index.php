@@ -8,9 +8,9 @@
 <body>
     <div align="center">
         <a href="conexao.php?opcao=1">Incluir</a>
-        <a href="conexao.php?opcao=2">Selecionar</a>
+        <a href="conexao.php?opcao=2">Editar</a>
         <a href="conexao.php?opcao=3">Excluir</a>
-        <a href="conexao.php?opcao=4">Selecionar Um</a>
+        <a href="conexao.php?opcao=4">Selecionar Todos</a>
         <hr width="50%">
         <form action="conexao.php">
             <label for="buscar">Buscar autor(email): </label>
