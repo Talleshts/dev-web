@@ -11,15 +11,14 @@ class Produto {
     private string $referencia;
     private int $cod_fabricante;
 
-    public function setProduto($produto_id, $nome, $data_fabricacao, $preco, $estoque, $descricao, $resumo, $referencia, $cod_fabricante) {
-        $this->produto_id = $produto_id;
+    public function setProduto($nome, $data_fabricacao, $preco, $estoque, $descricao, $resumo, $referencia, $cod_fabricante) {
         $this->nome = $nome;
         $this->data_fabricacao = strtotime($data_fabricacao);
         $this->preco = $preco;
         $this->estoque = $estoque;
-        $this->estoque = $estoque;
-        $this->descricao = $descricao;        
-        $this->referencia = $referencia;        
+        $this->descricao = $descricao;
+        $this->resumo = $resumo;
+        $this->referencia = $referencia;
         $this->cod_fabricante = $cod_fabricante;
     }
 

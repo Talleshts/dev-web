@@ -1,11 +1,11 @@
 <?php
-    require_once "includes/cabecalho.inc.php";       
+    require_once "includes/cabecalho.inc.php";
 ?>
 <p>
 <h1 class="text-center">Inclusão de produto</h1>
 <p> 
   
-<form class="row g-3" action="#" method="post">
+<form class="row g-3" action="./controlers/controllerProduto.php" method="post">
   <div class="col-md-3">
     <label for="pReferencia" class="form-label">Nº Referencia</label>
     <input type="text" class="form-control" name="pReferencia">
@@ -25,8 +25,7 @@
   <div class="col-md-3">
     <label for="pFabricante" class="form-label">Fabricante</label>
     <select name="pFabricante" class="form-select">
-      <option selected value="0">Escolha...</option>
-      <option selected value="1">Fabricante 1</option>
+      <option selected value="1000">Fabricante 1</option>
     </select>
   </div>
   <div class="col-md-2">
@@ -49,7 +48,7 @@
     <button type="submit" class="btn btn-primary">Incluir</button>
     <button type="reset" class="btn btn-danger">Cancelar</button>
   </div>
-  <input type="hidden" name="opcao" value="1">
+  <input type="hidden" name="pOpcao" value="1">
 </form>
 
 <?php

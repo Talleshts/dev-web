@@ -1,6 +1,8 @@
 <?php
 require_once 'conexao.inc.php';
 require_once '../classes/produto.inc.php';
+require_once '../utils/funcoesUteis.php';
+
 
 
 class ProdutoDAO{
@@ -13,12 +15,11 @@ class ProdutoDAO{
 
     function insert(Produto $produto){
         $sql = $this->con->prepare("insert into produtos
-        ( produto_id, nome, data_fabricacao, preco, estoque, descricao, resumo, referencia, cod_fabricante)
-        values (:produto_id, :nome, :data_fabricacao, :preco, :estoque, :descricao, :resumo, :referencia, :cod_fabricante)");
+        ( nome, data_fabricacao, preco, estoque, descricao, resumo, referencia, cod_fabricante)
+        values ( :nome, :data_fabricacao, :preco, :estoque, :descricao, :resumo, :referencia, :cod_fabricante)");
 
-        $sql->bindValue(":produto_id", $produto->produto_id);
         $sql->bindValue(":nome", $produto->nome);
-        $sql->bindValue(":data_fabricacao", $produto->data_fabricacao);
+        $sql->bindValue(':data_fabricacao', converteDataMysql($produto->data_fabricacao));
         $sql->bindValue(":preco", $produto->preco);
         $sql->bindValue(":estoque", $produto->estoque);
         $sql->bindValue(":descricao", $produto->descricao);
@@ -31,6 +32,17 @@ class ProdutoDAO{
         exit;
     }
 
+    function getProdutos(){
+        $sql = $this->con->query("select * from produtos");
+        $produtos = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return $produtos;
+    }
+
+    function excluirProduto($id){
+        $sql = $this->con->prepare("delete from produtos where produto_id = :id");
+        $sql->bindValue(":id", $id);
+        $sql->execute();
+    }
 }
 
 ?>

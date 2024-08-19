@@ -1,5 +1,13 @@
-<?php        
-      require_once 'includes/cabecalho.inc.php';   
+<?php
+      require_once '../classes/produto.inc.php';
+
+      require_once '../utils/funcoesUteis.php';
+
+      require_once 'includes/cabecalho.inc.php';
+
+      require_once '../controlers/controllerProduto.php';
+
+      $produtos = $_SESSION['produtos'];
 ?>
 <p>
 <h1 class="text-center">Produtos do estoque</h1>
@@ -20,21 +28,22 @@
       </thead>
       <tbody class="table-group-divider">
       <?php
-         // percurso aqui
-               echo "<tr align='center'>";
-               echo "<td>"."ID 0"."</td>";
-               echo "<td><strong>"."NOME"."</strong></td>";
-               echo "<td>"."RESUMO"."</td>";
-               echo "<td>"."DATA FORMATADA"."</td>";
-               echo "<td>"."R$ PREÇO"."</td>";
-               echo "<td>"."ESTOQUE"."</td>";
-               echo "<td>"."FABRICANTE"."</td>";
-               echo "<td><a href='#' class='btn btn-success btn-sm'>A</a> ";
-               echo "<a href='#' class='btn btn-danger btn-sm'>X</a></td>";
-               echo "</tr>";
-         
+            // percurso aqui
+            foreach ($produtos as $produto) {
+                  echo "<tr align='center'>";
+                  echo "<td>" . $produto['produto_id'] . "</td>";
+                  echo "<td><strong>" . $produto['nome'] . "</strong></td>";
+                  echo "<td>" . $produto['descricao'] . "</td>";
+                  echo "<td>" . formatarData($produto['data_fabricacao']) . "</td>";
+                  echo "<td>" . $produto['preco'] . "</td>";
+                  echo "<td>" . $produto['estoque'] . "</td>";
+                  echo "<td>" . $produto['cod_fabricante'] . "</td>";
+                  echo "<td><a href='#' class='btn btn-success btn-sm'>A</a> ";
+                  echo "<a href='../controlers/controllerProduto.php?pOpcao=3&pId=" . $produto['produto_id'] . "' class='btn btn-danger btn-sm'>X</a></td>";
+                  echo "</tr>";
+            }
       ?>
-      </tbody>  
+      </tbody> 
 </table>
 </div>
 

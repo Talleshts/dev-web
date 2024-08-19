@@ -13,11 +13,11 @@
                       Produtos
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Cadastrar</a></li>
+                      <li><a class="dropdown-item" href="./formProduto.php">Cadastrar</a></li>
                       <li><a class="dropdown-item" href="#">Cadastrar Vários</a></li>
                       <li><a class="dropdown-item" href="#">Consultar</a></li>
                       <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Show Room</a></li>
+                      <li><a class="dropdown-item" href="../controlers/controllerProduto.php?'pOpcao'=2">Show Room</a></li>
                     </ul>
                   </li>
 
