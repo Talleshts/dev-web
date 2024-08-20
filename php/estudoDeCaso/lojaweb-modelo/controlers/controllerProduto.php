@@ -2,8 +2,8 @@
 require_once '../dao/produtoDAO.inc.php';
 require_once '../classes/produto.inc.php';
 
-    session_start();
-    $pOpcao = $_REQUEST['pOpcao'];
+        session_start();
+        $pOpcao = $_REQUEST['pOpcao'];
         
         switch ($pOpcao) {
             case 1:
@@ -34,6 +34,14 @@ require_once '../classes/produto.inc.php';
                 $produtoDao = new ProdutoDAO();
                 $produtoDao->excluirProduto($id);
                 header('Location:controllerProduto.php?pOpcao=2');
+            break;
+            case 4:
+                $id = $_REQUEST['pId'];
+                $produtoDao = new ProdutoDAO();
+                $produto = $produtoDao->getProdutoById($id);
+                session_start();
+                $_SESSION['produto'] = $produto;
+                header('Location:controllerFabricante.php?pOpcao=3');
             break;
         }
 

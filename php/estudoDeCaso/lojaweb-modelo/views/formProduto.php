@@ -1,5 +1,9 @@
 <?php
     require_once "includes/cabecalho.inc.php";
+
+    session_start();
+
+    $fabricantes = $_SESSION['fabricantes'];
 ?>
 <p>
 <h1 class="text-center">Inclusão de produto</h1>
@@ -24,8 +28,13 @@
   </div>
   <div class="col-md-3">
     <label for="pFabricante" class="form-label">Fabricante</label>
-    <select name="pFabricante" class="form-select">
-      <option selected value="1000">Fabricante 1</option>
+    <select name="pFabricante">
+      <option value='0'>-</option>
+      <?php
+        foreach($fabricantes as $fab){
+          echo "<option value='$fab->codigo'>$fab->nome</option>";
+        }
+      ?>
     </select>
   </div>
   <div class="col-md-2">

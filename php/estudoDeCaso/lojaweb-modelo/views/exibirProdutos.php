@@ -5,8 +5,6 @@
 
       require_once 'includes/cabecalho.inc.php';
 
-      require_once '../controlers/controllerProduto.php';
-
       $produtos = $_SESSION['produtos'];
 ?>
 <p>
@@ -38,7 +36,7 @@
                   echo "<td>" . $produto['preco'] . "</td>";
                   echo "<td>" . $produto['estoque'] . "</td>";
                   echo "<td>" . $produto['cod_fabricante'] . "</td>";
-                  echo "<td><a href='#' class='btn btn-success btn-sm'>A</a> ";
+                  echo "<td><a href='../controlers/controllerProduto.php?pOpcao=4&pId=" . $produto['produto_id'] . "' class='btn btn-success btn-sm'>A</a> ";
                   echo "<a href='../controlers/controllerProduto.php?pOpcao=3&pId=" . $produto['produto_id'] . "' class='btn btn-danger btn-sm'>X</a></td>";
                   echo "</tr>";
             }

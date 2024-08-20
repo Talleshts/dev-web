@@ -11,4 +11,5 @@
 <?php
     // tratamento do menu para cada usuário!
     require_once "menu.inc.php";
+    session_start();
 ?>          
