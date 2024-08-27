@@ -17,7 +17,7 @@
                       <li><a class="dropdown-item" href="#">Cadastrar Vários</a></li>
                       <li><a class="dropdown-item" href="#">Consultar</a></li>
                       <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="../controlers/controllerProduto.php?pOpcao=2">Show Room</a></li>
+                      <li><a class="dropdown-item" href="./produtosVenda.php">Show Room</a></li>
                     </ul>
                   </li>
 

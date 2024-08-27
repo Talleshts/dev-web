@@ -20,6 +20,7 @@ require_once '../classes/produto.inc.php';
                 );
                 $produtoDao = new ProdutoDAO();
                 $produtoDao->insert($produto);
+                uploadFotos($_REQUEST['pReferencia']);
                 header('Location:controllerProduto.php?pOpcao=2');
             break;
             case 2:
@@ -32,6 +33,7 @@ require_once '../classes/produto.inc.php';
             case 3:
                 $id = $_REQUEST['pId'];
                 $produtoDao = new ProdutoDAO();
+                deletarFoto($produtoDao->getProdutoById($id)->referencia);
                 $produtoDao->excluirProduto($id);
                 header('Location:controllerProduto.php?pOpcao=2');
             break;
@@ -43,6 +45,31 @@ require_once '../classes/produto.inc.php';
                 $_SESSION['produto'] = $produto;
                 header('Location:controllerFabricante.php?pOpcao=3');
             break;
+        }
+
+
+        function uploadFotos($ref){
+            $imagem = $_FILES["imagem"];
+            $nome = $ref; // será colocado a Referência do produto como nome do arquivo
+            
+            if($imagem != NULL) {
+                $nome_temporario=$_FILES["imagem"]["tmp_name"];
+                copy($nome_temporario,"../views/imagens/produtos/$nome.jpg");
+            }
+            else {
+                echo "Você não realizou o upload de forma satisfatória.";
+            }
+        }
+
+        function deletarFoto($ref){
+
+            $arquivo = "../views/imagens/produtos/$ref.jpg";
+            
+            if(file_exists( $arquivo )){ // verifica se o arquivo existe
+                if (!unlink($arquivo)){ //aqui que se remove o arquivo retornando true, senão mostra mensagem
+                    echo "Não foi possível deletar o arquivo!";
+                }
+            }
         }
 
 ?>

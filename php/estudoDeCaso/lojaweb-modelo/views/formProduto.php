@@ -1,8 +1,6 @@
 <?php
     require_once "includes/cabecalho.inc.php";
 
-    session_start();
-
     $fabricantes = $_SESSION['fabricantes'];
 ?>
 <p>

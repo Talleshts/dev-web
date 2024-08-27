@@ -35,6 +35,9 @@ class ProdutoDAO{
     function getProdutos(){
         $sql = $this->con->query("select * from produtos");
         $produtos = $sql->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($produtos as $prod) {
+            $prod['cod_fabricante'] = $this->getFabricante($prod['cod_fabricante']);
+        }
         return $produtos;
     }
 
@@ -88,6 +91,17 @@ class ProdutoDAO{
         
         // Executar a instrução SQL
         $sql->execute();
+    }
+
+    private function getFabricante($id) {
+        $sql = $this->con->prepare("SELECT nome FROM fabricantes WHERE codigo = :id");
+        $sql->bindValue(':id', $id);
+        $sql->execute();
+        
+        $fab = $sql->fetch(PDO::FETCH_ASSOC);
+        
+        // Retorna o nome do fabricante ou uma string padrão caso não seja encontrado
+        return $fab ? $fab['nome'] : 'Desconhecido';
     }
     
 

@@ -30,7 +30,7 @@
             foreach ($produtos as $produto) {
                   echo "<tr align='center'>";
                   echo "<td>" . $produto['produto_id'] . "</td>";
-                  echo "<td><strong>" . $produto['nome'] . "</strong></td>";
+                  echo "<td><strong>" . $produto['referencia'] . "</strong></td>";
                   echo "<td>" . $produto['descricao'] . "</td>";
                   echo "<td>" . formatarData($produto['data_fabricacao']) . "</td>";
                   echo "<td>" . $produto['preco'] . "</td>";
