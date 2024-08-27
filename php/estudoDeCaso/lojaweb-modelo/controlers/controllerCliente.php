@@ -13,10 +13,15 @@ require_once '../dao/clienteDAO.inc.php';
                 if($cliente != null){
                     session_start();
                     $_SESSION['clienteLogado'] = $cliente;
-                    header('Location: ../views/exibirProdutos.php');
+                    header('Location: controllerProduto.php?pOpcao=6');
                 }else{
                     header('Location: ../views/formLogin.php?erro=1');
                 }
+            break;
+            case 2:
+                session_start();
+                unset($_SESSION['clienteLogado']);
+                header("Location:../views/index.php");
             break;
         }
 

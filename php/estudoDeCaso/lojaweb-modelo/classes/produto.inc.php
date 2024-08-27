@@ -22,7 +22,6 @@ class Produto {
         $this->cod_fabricante = $cod_fabricante;
     }
 
-
     function __get($name)
     {
         return $this->$name;

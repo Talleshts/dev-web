@@ -45,6 +45,13 @@ require_once '../classes/produto.inc.php';
                 $_SESSION['produto'] = $produto;
                 header('Location:controllerFabricante.php?pOpcao=3');
             break;
+            case 6:
+                session_start();
+                $produtoDao = new ProdutoDAO();
+                $produtos = $produtoDao->getProdutos();
+                $_SESSION['produtos'] = $produtos;
+                header('Location:../views/produtosVenda.php');
+            break;
         }
 
 

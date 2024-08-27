@@ -36,6 +36,12 @@
                     <a class="d-block text-center mt-2 small" href="formCliente.php">Não possui uma conta? Cadastre-se aqui</a>
 
                     <input type="hidden" value="1 " name="pOpcao">
+                    <?php
+                        if (isset($_REQUEST['erro'])){
+                            if ((int)($_REQUEST['erro']) == 1) // captura e ver o tipo do erro, no caso, 1
+                                echo "<b><font face='Verdana' size='2' color='red'>Login Incorreto!</font><b>";
+                        }
+                    ?>
                 </form>
             </div>
         </div>

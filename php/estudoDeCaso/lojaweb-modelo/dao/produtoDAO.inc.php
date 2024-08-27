@@ -100,8 +100,7 @@ class ProdutoDAO{
         
         $fab = $sql->fetch(PDO::FETCH_ASSOC);
         
-        // Retorna o nome do fabricante ou uma string padrão caso não seja encontrado
-        return $fab ? $fab['nome'] : 'Desconhecido';
+        return $fab;
     }
     
 

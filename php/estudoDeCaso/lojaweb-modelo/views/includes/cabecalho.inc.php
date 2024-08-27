@@ -9,7 +9,10 @@
   <body>
         <div class="container">
 <?php
-    // tratamento do menu para cada usuário!
-    require_once "menu.inc.php";
+    $tipo = 'C';
     session_start();
+    if(isset($_SESSION['clienteLogado'])){
+      $tipo = $_SESSION['clienteLogado']['tipo'];
+    }
+    require_once "menu".$tipo.".inc.php";
 ?>          

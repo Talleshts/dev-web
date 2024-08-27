@@ -8,7 +8,7 @@
 
     <li><a href="index.php" class="nav-link px-2 link-secondary">Home</a></li>
 
-    <li><a href="#" class="nav-link px-2 link-secondary">Produtos da Loja</a></li>
+    <li><a href="../controlers/controllerProduto.php?pOpcao=6" class="nav-link px-2 link-secondary">Produtos da Loja</a></li>
 
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle link-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -31,7 +31,7 @@
     <li><a href="#" class="nav-link px-2 link-dark">Contato</a></li>
 
     <li>
-      <a class="nav-link px-2 link-dark" href="#">
+      <a class="nav-link px-2 link-dark" href="./exibirCarrinho.php">
         <img src="imagens/cart3.png" alt="">
       </a>
     </li>
@@ -39,8 +39,14 @@
   </ul>
 
   <div class="col-md-3 text-end">
-    
-      <a class="btn btn-outline-primary me-2" role="button" href="#">Login</a>
-    
+    <?php
+      if(!isset($_SESSION['cliente'])){
+    ?>
+    <a class="btn btn-outline-primary me-2" role="button" href="formLogin.php">Login</a>
+    <?php
+      }else{
+        include_once "modal.inc.php";
+      }
+    ?>   
   </div>
 </header>
