@@ -26,7 +26,7 @@
                       Clientes
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Cadastrar</a></li>                      
+                      <li><a class="dropdown-item" href="#">Cadastrar</a></li>
                       <li><a class="dropdown-item" href="#">Consultar</a></li>
                     </ul>
                   </li>
@@ -36,7 +36,7 @@
                       Vendas
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Vendas realizadas</a></li>                      
+                      <li><a class="dropdown-item" href="#">Vendas realizadas</a></li>
                     </ul>
                   </li>
                   <li><a href="#" class="nav-link px-2 link-dark">Contato</a></li>
@@ -48,16 +48,17 @@
                   </li>
                   
                 </ul>
-
-                <div class="col-md-3 text-end">
-                  <?php
-                    if(!isset($_SESSION['cliente'])){
-                  ?>
-                  <a class="btn btn-outline-primary me-2" role="button" href="formLogin.php">Login</a>
-                  <?php
-                    }else{
-                      include_once "modal.inc.php";
-                    }
-                  ?>                
-                </div>
+                  <div class="col-md-3 text-end">
+                    <?php
+                      if (!isset($_SESSION['clienteLogado'])) {
+                    ?>
+                    <a class="btn btn-outline-primary me-2" role="button" href="formLogin.php">Login</a>
+                    <?php
+                      } else {
+                    ?>
+                    <?php
+                        include_once "modal.inc.php";
+                      }
+                    ?>
+                  </div>
               </header>

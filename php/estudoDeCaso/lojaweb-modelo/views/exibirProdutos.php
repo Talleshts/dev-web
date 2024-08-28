@@ -30,12 +30,12 @@
             foreach ($produtos as $produto) {
                   echo "<tr align='center'>";
                   echo "<td>" . $produto['produto_id'] . "</td>";
-                  echo "<td><strong>" . $produto['referencia'] . "</strong></td>";
+                  echo "<td><strong>" . $produto['nome'] . "</strong></td>";
                   echo "<td>" . $produto['descricao'] . "</td>";
                   echo "<td>" . formatarData($produto['data_fabricacao']) . "</td>";
                   echo "<td>" . $produto['preco'] . "</td>";
                   echo "<td>" . $produto['estoque'] . "</td>";
-                  echo "<td>" . $produto['cod_fabricante'] . "</td>";
+                  echo "<td>" . $produto['nome_fabricante'] . "</td>";
                   echo "<td><a href='../controlers/controllerProduto.php?pOpcao=4&pId=" . $produto['produto_id'] . "' class='btn btn-success btn-sm'>A</a> ";
                   echo "<a href='../controlers/controllerProduto.php?pOpcao=3&pId=" . $produto['produto_id'] . "' class='btn btn-danger btn-sm'>X</a></td>";
                   echo "</tr>";

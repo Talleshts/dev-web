@@ -28,29 +28,53 @@
       <tbody class="table-group-divider">
       <?php
             $contador = 1;
-            $soma = 0;         
+            $somaTotalCarrinho = 0;
+            $itensAgrupados = [];
+
             foreach($carrinho as $item){
                   $produto = $item->produto;
-      ?>
+                  $refProduto = $produto['produto_id'];
+
+                  if (!isset($itensAgrupados[$refProduto])) {
+                    $itensAgrupados[$refProduto] = [
+                        'produto' => $produto,
+                        'quantidade' => 0,
+                        'valorTotal' => 0
+                    ];
+                }
+                  $itensAgrupados[$refProduto]['quantidade'] += $item->quantidade;
+                  $itensAgrupados[$refProduto]['valorTotal'] = $itensAgrupados[$refProduto]['quantidade'] * $produto['preco'];
+            }
+
+            foreach ($itensAgrupados as $itemInfo) {
+                $produto = $itemInfo['produto'];
+                $quantidade = $itemInfo['quantidade'];
+                $valorTotalItem = $itemInfo['valorTotal'];
+                $somaTotalCarrinho += $valorTotalItem;
+    
+                ?>
             <tr class="align-middle" style="text-align: center">
                   <td><?= $contador ?></td>
-                  <td><?=$produto->$produto_id?></td>
-                  <td><?=$produto->$nome?></td>
-                  <td><?=$item->$produto['cod_fabricante']?></td>
-                  <td>R$ <?=$item->$produto['preco']?></td>
-                  <td>N</td>
-                  <td>R$ Valor Item</td>
+                  <td><?=$produto['produto_id']?></td>
+                  <td><?=$produto['nome']?></td>
+                  <td><?=$produto['nome_fabricante']?></td>
+                  <td>R$ <?=number_format($produto['preco'], 2, ',', '.')?></td>
+                  <td><?= $quantidade ?></td>
+                  <td>R$ <?= number_format($valorTotalItem, 2, ',', '.') ?></td>
                   <td><a href="#" class='btn btn-danger btn-sm'>X</a></td>
                   
             </tr>
 
          <?php
             $contador++;
-            $soma+=$item->$produto['preco'];
             }
          ?>
 
-            <tr align="right"><td colspan="8"><font face="Verdana" size="4" color="red"><b>Valor Total = R$ <?= $soma ?></b></font></td></tr>
+            <tr align="right">
+                <td colspan="8">
+                    <font face="Verdana" size="4" color="red"><b>Valor Total = R$ <?= number_format($somaTotalCarrinho, 2, ',', '.') ?></b></font>
+                </td>
+            </tr>
       </table> 
       <div class="container text-center">
             <div class="row">

@@ -32,14 +32,16 @@ class ProdutoDAO{
         exit;
     }
 
-    function getProdutos(){
-        $sql = $this->con->query("select * from produtos");
+    function getProdutos() {
+        $sql = $this->con->query("
+            SELECT p.*, f.nome AS nome_fabricante 
+            FROM produtos p
+            INNER JOIN fabricantes f ON p.cod_fabricante = f.codigo
+        ");
         $produtos = $sql->fetchAll(PDO::FETCH_ASSOC);
-        foreach ($produtos as $prod) {
-            $prod['cod_fabricante'] = $this->getFabricante($prod['cod_fabricante']);
-        }
         return $produtos;
     }
+
 
     function excluirProduto($id){
         $sql = $this->con->prepare("delete from produtos where produto_id = :id");
@@ -50,7 +52,11 @@ class ProdutoDAO{
     function getProdutoById($id){
         // session_start();
 
-        $sql = $this->con->prepare("select * from produtos where produto_id = :id");
+        $sql = $this->con->prepare("
+            SELECT p.*, f.nome AS nome_fabricante 
+            FROM produtos p
+            INNER JOIN fabricantes f ON p.cod_fabricante = f.codigo where produto_id = :id
+        ");
         $sql->bindValue(":id", $id);
         $sql->execute();
 
@@ -93,15 +99,15 @@ class ProdutoDAO{
         $sql->execute();
     }
 
-    private function getFabricante($id) {
-        $sql = $this->con->prepare("SELECT nome FROM fabricantes WHERE codigo = :id");
-        $sql->bindValue(':id', $id);
-        $sql->execute();
+    // private function getFabricante($id) {
+    //     $sql = $this->con->prepare("SELECT nome FROM fabricantes WHERE codigo = :id");
+    //     $sql->bindValue(':id', $id);
+    //     $sql->execute();
         
-        $fab = $sql->fetch(PDO::FETCH_ASSOC);
+    //     $fab = $sql->fetch(PDO::FETCH_ASSOC);
         
-        return $fab;
-    }
+    //     return $fab['nome'];
+    // }
     
 
 

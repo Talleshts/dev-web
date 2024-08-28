@@ -22,7 +22,7 @@
       <div class="card-body">
         <h5 class="card-title"><?= $produto['nome'] ?> </h5>
         <p class="card-text"><?= $produto['resumo'] ?></p>
-        <h6 class="card-text text-end">Marca: <?= $produto['cod_fabricante'] ?></h6>
+        <h6 class="card-text text-end">Marca: <?= $produto['nome_fabricante'] ?></h6>
         <h4 class="card-title">R$ <?= $produto['preco'] ?></h4>
         <div class="text-end"><?php echo "<a href='../controlers/controllerCarrinho.php?pOpcao=1&id=".$produto['produto_id']."' class='btn btn-danger'>Comprar</a>" ?></div>        
       </div>
