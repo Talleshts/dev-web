@@ -5,9 +5,9 @@ class Item{
     private $quantidade;
     public $produto;
     
-    public function __construct( $produto, $quantidade) {
+    public function __construct( $produto ) {
         $this->produto = $produto;
-        $this->quantidade = $quantidade;
+        $this->setQuantidade();
         $this->setValorItem();
     }
 

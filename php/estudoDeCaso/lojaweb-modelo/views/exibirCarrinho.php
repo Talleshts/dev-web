@@ -9,7 +9,9 @@
 <h1 class="text-center">Carrinho de compra</h1>
 <p> 
 <?php
-
+      if(isset($_REQUEST['status'])){
+            include_once '../views/includes/carrinhoVazio.inc.php';
+      }else{
 ?>
 <div class="table-responsive">
 <table class="table table-ligth table-striped">
@@ -30,6 +32,7 @@
             $contador = 1;
             $somaTotalCarrinho = 0;
             $itensAgrupados = [];
+            // var_dump($carrinho);
 
             foreach($carrinho as $item){
                   $produto = $item->produto;
@@ -45,7 +48,7 @@
                   $itensAgrupados[$refProduto]['quantidade'] += $item->quantidade;
                   $itensAgrupados[$refProduto]['valorTotal'] = $itensAgrupados[$refProduto]['quantidade'] * $produto['preco'];
             }
-
+            // var_dump($itensAgrupados);
             foreach ($itensAgrupados as $itemInfo) {
                 $produto = $itemInfo['produto'];
                 $quantidade = $itemInfo['quantidade'];
@@ -61,7 +64,7 @@
                   <td>R$ <?=number_format($produto['preco'], 2, ',', '.')?></td>
                   <td><?= $quantidade ?></td>
                   <td>R$ <?= number_format($valorTotalItem, 2, ',', '.') ?></td>
-                  <td><a href="#" class='btn btn-danger btn-sm'>X</a></td>
+                  <td><a href='../controlers/controllerCarrinho.php?pOpcao=3&index=<?=$contador-1?>' class='btn btn-danger btn-sm'>X</a></td>
                   
             </tr>
 
@@ -91,5 +94,6 @@
       </div>
 
 <?php
+}
      require_once 'includes/rodape.inc.php';
 ?>

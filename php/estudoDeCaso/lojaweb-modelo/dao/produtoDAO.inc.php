@@ -90,7 +90,7 @@ class ProdutoDAO{
         $sql->bindValue(":descricao", $produto->descricao, PDO::PARAM_STR);
         $sql->bindValue(":estoque", $produto->estoque, PDO::PARAM_INT);
         $sql->bindValue(":nome", $produto->nome, PDO::PARAM_STR);
-        $sql->bindValue(":preco", $produto->preco, PDO::PARAM_STR); // float values should be passed as strings
+        $sql->bindValue(":preco", $produto->preco, PDO::PARAM_STR);
         $sql->bindValue(":referencia", $produto->referencia, PDO::PARAM_STR);
         $sql->bindValue(":resumo", $produto->resumo, PDO::PARAM_STR);
         $sql->bindValue(":produto_id", $produto->produto_id, PDO::PARAM_INT);

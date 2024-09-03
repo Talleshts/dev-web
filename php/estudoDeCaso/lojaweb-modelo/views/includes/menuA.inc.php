@@ -42,7 +42,7 @@
                   <li><a href="#" class="nav-link px-2 link-dark">Contato</a></li>
 
                   <li>
-                    <a class="nav-link px-2 link-dark" href="./exibirCarrinho.php">
+                    <a class="nav-link px-2 link-dark" href="../controlers/controllerCarrinho.php?pOpcao=4">
                         <img src="imagens/cart3.png" alt="">
                     </a>
                   </li>
