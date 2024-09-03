@@ -25,7 +25,7 @@ require_once '../classes/item.inc.php';
                 } else {
                     $carrinho[] = $item;
                 }
-                
+
                 $_SESSION['carrinho'] = $carrinho;
                 header('Location: ../views/exibirCarrinho.php');
             break;
@@ -57,6 +57,13 @@ require_once '../classes/item.inc.php';
                     header('Location: ../views/exibirCarrinho.php');
                 }
                 break;
+            case 5:
+                session_start();
+                if(isset($_SESSION['clienteLogado'])){
+                    header('Location: ../views/dadosCompra.php');
+                }else{
+                    header('Location: ../views/formLogin.php?erro=1');
+                }
         }
 
 

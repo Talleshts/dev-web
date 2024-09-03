@@ -32,7 +32,6 @@
             $contador = 1;
             $somaTotalCarrinho = 0;
             $itensAgrupados = [];
-            // var_dump($carrinho);
 
             foreach($carrinho as $item){
                   $produto = $item->produto;
@@ -48,7 +47,6 @@
                   $itensAgrupados[$refProduto]['quantidade'] += $item->quantidade;
                   $itensAgrupados[$refProduto]['valorTotal'] = $itensAgrupados[$refProduto]['quantidade'] * $produto['preco'];
             }
-            // var_dump($itensAgrupados);
             foreach ($itensAgrupados as $itemInfo) {
                 $produto = $itemInfo['produto'];
                 $quantidade = $itemInfo['quantidade'];
@@ -88,7 +86,7 @@
                         <a class="btn btn-danger" role="button" href="../controlers/controllerCarrinho.php?pOpcao=2"><b>Esvaziar carrinho</b></a>
                   </div>
                   <div class="col">
-                        <a class="btn btn-success" role="button" href="#"><b>Finalizar compra</b></a>
+                        <a class="btn btn-success" role="button" href="../controlers/controllerCarrinho.php?pOpcao=5"><b>Finalizar compra</b></a>
                   </div>
             </div>
       </div>
