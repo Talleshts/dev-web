@@ -9,23 +9,23 @@ require_once '../classes/item.inc.php';
                 $id = (int)$_REQUEST['id'];
                 $produtoDao = new ProdutoDAO();
                 $produto = $produtoDao->getProdutoById($id);
-                $item = new Item($produto, 1);
+                $item = new Item($produto);
                 session_start();
-                $carrinho = null;
+
                 if (!isset($_SESSION['carrinho'])) {
                     $carrinho = array();
                 }else{
                     $carrinho = $_SESSION['carrinho'];
                 }
 
-                $carrinho[] = $item;
-                // if(in_array($item, $carrinho)){
-                //     $key = array_search($item, $carrinho);
-                //     $carrinho[$key]->setQuantidade();
-                //     $carrinho[$key]->setValorItem();
-                // }else{
-                //     $carrinho[] = $item;
-                // }
+                $key = array_search2($item->produto['produto_id'], $carrinho);
+                if ($key != -1) {
+                    $carrinho[$key]->setQuantidade();
+                    $carrinho[$key]->setValorItem();
+                } else {
+                    $carrinho[] = $item;
+                }
+                
                 $_SESSION['carrinho'] = $carrinho;
                 header('Location: ../views/exibirCarrinho.php');
             break;
@@ -63,7 +63,7 @@ require_once '../classes/item.inc.php';
         function array_search2($chave, $vetor){
             $index = -1;
             for($i = 0; $i<count($vetor);$i++){
-                if($chave == $vetor[$i]['Produto']['produto_id']){
+                if($chave == $vetor[$i]->produto['produto_id']){
                     $index = $i;
                     break;
                 }
