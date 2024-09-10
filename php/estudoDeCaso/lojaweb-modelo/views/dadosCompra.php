@@ -82,7 +82,7 @@
           <div class="container text-center">
             <div class="row">
                   <div class="col">
-                        <a class="btn btn-success" role="button" href="#"><b>Efetuar o pagamento</b></a>
+                        <a class="btn btn-success" role="button" href="dadosPagamento.php"><b>Efetuar o pagamento</b></a>
                   </div>                 
             </div>
          </div>

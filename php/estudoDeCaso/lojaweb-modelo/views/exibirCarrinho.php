@@ -86,7 +86,7 @@
                         <a class="btn btn-danger" role="button" href="../controlers/controllerCarrinho.php?pOpcao=2"><b>Esvaziar carrinho</b></a>
                   </div>
                   <div class="col">
-                        <a class="btn btn-success" role="button" href="../controlers/controllerCarrinho.php?pOpcao=5"><b>Finalizar compra</b></a>
+                        <a class="btn btn-success" role="button" href="../controlers/controllerCarrinho.php?pOpcao=5&total=<?=$somaTotalCarrinho?>"><b>Finalizar compra</b></a>
                   </div>
             </div>
       </div>

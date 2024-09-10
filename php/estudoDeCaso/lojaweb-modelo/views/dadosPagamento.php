@@ -5,7 +5,7 @@
         <h2><font face="Arial">Opção de Pagamento</font></h2>
       <p>
       Escolha a sua opção de pagamento:
-      <form action="#" method="get">
+      <form action="../controlers/controllerVenda.php" method="get">
             <input type="radio" name="pag" value="boleto"> Boleto Bancário<p>
             <input type="radio" name="pag" value="cartao"> Cartão de Crédito<p>
             <input type="hidden" value="1" name="pOpcao">

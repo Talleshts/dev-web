@@ -1,6 +1,6 @@
 <?php
 
-class Item{
+class Venda{
     private float $id_venda;
     private $cpf;
     private $valorTotal;

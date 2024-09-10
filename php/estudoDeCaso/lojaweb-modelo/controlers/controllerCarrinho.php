@@ -60,6 +60,7 @@ require_once '../classes/item.inc.php';
             case 5:
                 session_start();
                 if(isset($_SESSION['clienteLogado'])){
+                    $_SESSION["valorTotal"] = $_REQUEST["total"];
                     header('Location: ../views/dadosCompra.php');
                 }else{
                     header('Location: ../views/formLogin.php?erro=1');
