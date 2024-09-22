@@ -1,11 +1,13 @@
 <?php
 
-class Item{
+class Item
+{
     private float $valorItem;
     private $quantidade;
     public $produto;
-    
-    public function __construct( $produto ) {
+
+    public function __construct($produto)
+    {
         $this->produto = $produto;
         $this->setQuantidade();
         $this->setValorItem();
@@ -15,20 +17,19 @@ class Item{
     {
         return $this->$name;
     }
-    
+
     function __set($name, $value)
     {
         $this->$name = $value;
     }
 
-    public function setValorItem(){
+    public function setValorItem()
+    {
         $this->valorItem = $this->quantidade * $this->produto->preco;
     }
 
-    public function setQuantidade(){
+    public function setQuantidade()
+    {
         $this->quantidade++;
     }
 }
-    
-    
-?>
