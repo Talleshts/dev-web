@@ -9,7 +9,7 @@ class Item
     public function __construct($produto)
     {
         $this->produto = $produto;
-        $this->setQuantidade();
+        $this->quantidade = 1;
         $this->setValorItem();
     }
 

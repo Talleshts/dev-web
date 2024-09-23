@@ -5,8 +5,7 @@ require_once '../classes/item.inc.php';
 if (isset($_REQUEST['pOpcao'])) {
     $pOpcao = (int)$_REQUEST['pOpcao'];
     switch ($pOpcao) {
-        case 1:
-            //add ao carrinho
+        case 1: // Adicionar item ao carrinho
             $id = (int)$_REQUEST['id'];
             $produtoDao = new ProdutoDAO();
             $produto = $produtoDao->getProdutoById($id);
@@ -39,8 +38,8 @@ if (isset($_REQUEST['pOpcao'])) {
             break;
             //escluir um
         case 3:
-            $index = (int)$_REQUEST['index'];
             session_start();
+            $index = (int)$_REQUEST['index'];
             $carrinho = $_SESSION['carrinho'];
 
             unset($carrinho[$index]);
@@ -49,14 +48,18 @@ if (isset($_REQUEST['pOpcao'])) {
             $_SESSION['carrinho'] = $carrinho;
             header('Location: controllerCarrinho.php?pOpcao=4');
             break;
-        case 4:
+        case 4: // Atualizar quantidade de um item no carrinho via POST
             session_start();
+            $index = (int)$_POST['index'];
+            $novaQuantidade = (int)$_POST['quantidade'];
 
-            if (!isset($_SESSION['carrinho']) || sizeof($_SESSION['carrinho']) == 0) {
-                header('Location: ../views/exibirCarrinho.php?status=1');
-            } else {
-                header('Location: ../views/exibirCarrinho.php');
+            // Valida quantidade maior que 0
+            if ($novaQuantidade > 0 && isset($_SESSION['carrinho'][$index])) {
+                $_SESSION['carrinho'][$index]->quantidade = $novaQuantidade;
+                $_SESSION['carrinho'][$index]->valorItem = $_SESSION['carrinho'][$index]->produto->preco * $novaQuantidade;
             }
+
+            header("Location: ../views/exibirCarrinho.php");
             break;
         case 5:
             session_start();
@@ -66,9 +69,9 @@ if (isset($_REQUEST['pOpcao'])) {
             } else {
                 header('Location: ../views/formLogin.php?erro=1');
             }
+            break;
     }
 }
-
 
 function array_search2($chave, $vetor)
 {

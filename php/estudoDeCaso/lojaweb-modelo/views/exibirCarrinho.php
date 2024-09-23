@@ -32,7 +32,7 @@ $carrinho = $_SESSION['carrinho'];
                   $contador = 1;
                   $somaTotalCarrinho = 0;
 
-                  foreach ($carrinho as $item) {
+                  foreach ($carrinho as $index => $item) {
                   ?>
                         <tr class="align-middle" style="text-align: center">
                               <td><?= $contador ?></td>
@@ -40,10 +40,15 @@ $carrinho = $_SESSION['carrinho'];
                               <td><?= $item->produto->nome ?></td>
                               <td><?= $item->produto->nome_fabricante ?></td>
                               <td>R$ <?= number_format($item->produto->preco, 2, ',', '.') ?></td>
-                              <td><?= $item->quantidade ?></td>
+                              <td>
+                                    <form action="../controlers/controllerCarrinho.php" method="post">
+                                          <input type="number" name="quantidade" value="<?= $item->quantidade ?>" min="1" style="width: 60px;">
+                                          <input type="hidden" name="index" value="<?= $index ?>">
+                                          <button type="submit" name="pOpcao" value="4" class="btn btn-primary btn-sm">Atualizar</button>
+                                    </form>
+                              </td>
                               <td>R$ <?= number_format($item->valorItem, 2, ',', '.') ?></td>
-                              <td><a href='../controlers/controllerCarrinho.php?pOpcao=3&index=<?= $contador - 1 ?>' class='btn btn-danger btn-sm'>X</a></td>
-
+                              <td><a href='../controlers/controllerCarrinho.php?pOpcao=3&index=<?= $index ?>' class='btn btn-danger btn-sm'>X</a></td>
                         </tr>
 
                   <?php
