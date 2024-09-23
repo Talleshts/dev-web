@@ -55,6 +55,8 @@ class ClienteDAO
         $sql->bindValue(":rg", $rg);
         $sql->bindValue(":tipo", $tipo);
         $sql->execute();
+
+        $this->inserirOuAtualizarUsuarios($cpf, $email, $senha, $tipo);
     }
 
     function buscarClientePorCpf($cpf)
@@ -81,6 +83,8 @@ class ClienteDAO
         $sql->bindValue(":rg", $rg);
         $sql->bindValue(":tipo", $tipo);
         $sql->execute();
+
+        $this->inserirOuAtualizarUsuarios($cpf, $email, $senha, $tipo);
     }
 
     function buscarClientePorEmail($email)
@@ -95,6 +99,61 @@ class ClienteDAO
     {
         $sql = $this->con->prepare("UPDATE clientes SET tipo = :tipo WHERE cpf = :cpf");
         $sql->bindValue(":cpf", $cpf);
+        $sql->bindValue(":tipo", $tipo);
+        $sql->execute();
+
+        $this->inserirOuAtualizarUsuarios($cpf, null, null, $tipo);
+    }
+    private function inserirOuAtualizarUsuarios($cpf, $email, $senha, $tipo)
+    {
+        $tipo = $this->mapearTipo($tipo);
+
+        if ($this->usuarioExiste($cpf)) {
+            $this->atualizarUsuario($cpf, $email, $senha, $tipo);
+        } else {
+            $this->inserirUsuario($cpf, $email, $senha, $tipo);
+        }
+    }
+
+    private function mapearTipo($tipo)
+    {
+        $tipoMap = [
+            'C' => 1,
+            'A' => 2,
+            'D' => 3
+        ];
+        if (!isset($tipoMap[$tipo])) {
+            throw new InvalidArgumentException("Tipo inválido: $tipo");
+        } else {
+            return $tipoMap[$tipo];
+        }
+    }
+
+    private function usuarioExiste($cpf)
+    {
+        $sql = $this->con->prepare("SELECT * FROM usuarios WHERE id = :cpf");
+        $sql->bindValue(":cpf", $cpf);
+        $sql->execute();
+
+        return $sql->rowCount() > 0;
+    }
+
+    private function atualizarUsuario($cpf, $email, $senha, $tipo)
+    {
+        $sql = $this->con->prepare("UPDATE usuarios SET login = :email, senha = :senha, tipo = :tipo WHERE id = :cpf");
+        $sql->bindValue(":cpf", $cpf);
+        $sql->bindValue(":email", $email);
+        $sql->bindValue(":senha", $senha);
+        $sql->bindValue(":tipo", $tipo);
+        $sql->execute();
+    }
+
+    private function inserirUsuario($cpf, $email, $senha, $tipo)
+    {
+        $sql = $this->con->prepare("INSERT INTO usuarios (id, login, senha, tipo) VALUES (:cpf, :email, :senha, :tipo)");
+        $sql->bindValue(":cpf", $cpf);
+        $sql->bindValue(":email", $email);
+        $sql->bindValue(":senha", $senha);
         $sql->bindValue(":tipo", $tipo);
         $sql->execute();
     }
