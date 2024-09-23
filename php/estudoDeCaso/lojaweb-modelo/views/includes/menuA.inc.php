@@ -29,7 +29,17 @@
       </a>
       <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="formCliente.php">Cadastrar</a></li>
-        <li><a class="dropdown-item" href="../controlers/controllerCliente.php?pOpcao=4">Consultar</a></li>
+        <li><a class="dropdown-item" href="../controlers/controllerCliente.php?pOpcao=4">Seus Dados</a></li>
+      </ul>
+    </li>
+
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle link-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Fabricantes
+      </a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="formAddFabricante.php">Cadastrar</a></li>
+        <li><a class="dropdown-item" href="listarFabricantes.php">Listar</a></li>
       </ul>
     </li>
 
