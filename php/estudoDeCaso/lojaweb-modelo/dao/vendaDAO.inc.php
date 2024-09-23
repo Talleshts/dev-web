@@ -43,6 +43,15 @@ class VendaDAO
         }
     }
 
+    public function atualizarEstoque($produto_id, $quantidade)
+    {
+        $sql = $this->con->prepare("UPDATE produtos SET estoque = estoque - :quantidade WHERE produto_id = :produto_id");
+        $sql->bindValue(':quantidade', $quantidade);
+        $sql->bindValue(':produto_id', $produto_id);
+        $sql->execute();
+    }
+
+
     function getIdVenda()
     {
         $sql = $this->con->query("SELECT MAX(id_venda) as maior from vendas");

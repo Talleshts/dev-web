@@ -3,13 +3,17 @@ require_once '../classes/item.inc.php';
 require_once 'includes/cabecalho.inc.php';
 require_once '../controlers/controllerCarrinho.php';
 
-$carrinho = $_SESSION['carrinho'];
+if (!isset($_SESSION['carrinho'])) {
+      $_SESSION['carrinho'] = array();
+} else {
+      $carrinho = $_SESSION['carrinho'];
+}
 ?>
 
 <h1 class="text-center">Carrinho de compra</h1>
 <p>
       <?php
-      if (isset($_REQUEST['status'])) {
+      if (empty($carrinho)) {
             include_once '../views/includes/carrinhoVazio.inc.php';
       } else {
       ?>
