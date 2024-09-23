@@ -15,8 +15,8 @@
         Clientes
       </a>
       <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Cadastrar</a></li>
-        <li><a class="dropdown-item" href="#">Seus dados</a></li>
+        <li><a class="dropdown-item" href="formCliente.php">Cadastrar</a></li>
+        <li><a class="dropdown-item" href="../controlers/controllerCliente.php?pOpcao=4">Consultar</a></li>
       </ul>
     </li>
 
@@ -37,17 +37,17 @@
     </li>
 
   </ul>
-    <div class="col-md-3 text-end">
-      <?php
-        if (!isset($_SESSION['clienteLogado'])) {
-      ?>
+  <div class="col-md-3 text-end">
+    <?php
+    if (!isset($_SESSION['clienteLogado'])) {
+    ?>
       <a class="btn btn-outline-primary me-2" role="button" href="formLogin.php">Login</a>
-      <?php
-        } else {
-      ?>
-      <?php
-          include_once "modal.inc.php";
-        }
-      ?>
-    </div>
+    <?php
+    } else {
+    ?>
+    <?php
+      include_once "modal.inc.php";
+    }
+    ?>
+  </div>
 </header>

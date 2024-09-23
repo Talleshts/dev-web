@@ -1,4 +1,10 @@
-<?php require_once "includes/cabecalho.inc.php" ?>
+<?php require_once "includes/cabecalho.inc.php";
+
+if (isset($_REQUEST['erro']) && (int)($_REQUEST['erro']) == 1) {
+  echo "<b><font face='Verdana' size='2' color='red'>Vocé não possui mais acesso a loja. Você teve a conta desativada. Tente logar para ativar de novo!</font><b>";
+}
+
+?>
 
 <!-- CONTEUDO -->
 <h1 class="text-center">Bem-vindos a nossa Loja Virtual!</h1>

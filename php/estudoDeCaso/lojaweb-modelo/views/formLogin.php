@@ -14,7 +14,7 @@
                 <form action="../controlers/controllerCliente.php" method="get">
 
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="floatingInputEmail" placeholder="nome@exemplo.com" name="pEmail">
+                        <input type="pEmail" class="form-control" id="floatingInputEmail" placeholder="nome@exemplo.com" name="pEmail">
                         <label for="floatingInputEmail">Endereço de Email</label>
                     </div>
 
@@ -30,17 +30,31 @@
                     </div>
 
                     <?php
-                            echo "Erro de Login aqui!";
+                    echo "Erro de Login aqui!";
                     ?>
 
                     <a class="d-block text-center mt-2 small" href="formCliente.php">Não possui uma conta? Cadastre-se aqui</a>
+                    <br>
 
                     <input type="hidden" value="1 " name="pOpcao">
                     <?php
-                        if (isset($_REQUEST['erro'])){
-                            if ((int)($_REQUEST['erro']) == 1) // captura e ver o tipo do erro, no caso, 1
-                                echo "<b><font face='Verdana' size='2' color='red'>Login Incorreto!</font><b>";
+                    if (isset($_REQUEST['erro'])) {
+                        if ((int)($_REQUEST['erro']) == 1) {
+                            echo "<b><font face='Verdana' size='2' color='red'>Login Incorreto!</font><b>";
+                        } elseif ((int)($_REQUEST['erro']) == 2) {
+                            $email = isset($_SESSION['pEmail']) ? htmlspecialchars($_SESSION['pEmail']) : '';
+                            echo "<b><font face='Verdana' size='2' color='red'>Usuário Desativado! Deseja ativar o usuário?</font><b>";
+                            echo '<form action="../controlers/controllerCliente.php" method="post">';
+                            echo '<input type="hidden" name="pOpcao" value="6">';
+                            echo '<input type="hidden" name="pEmail" value="' . $email . '">';
+                            echo '<button type="submit" class="btn btn-primary">Ativar Usuário</button>';
+                            echo '</form>';
                         }
+                    }
+
+                    if (isset($_REQUEST['ativado']) && (int)($_REQUEST['ativado']) == 1) {
+                        echo "<b><font face='Verdana' size='2' color='green'>Usuário Ativado com Sucesso!</font><b>";
+                    }
                     ?>
                 </form>
             </div>
