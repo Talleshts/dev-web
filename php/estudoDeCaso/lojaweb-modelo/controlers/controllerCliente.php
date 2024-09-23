@@ -28,8 +28,15 @@ switch ($opcao) {
     case 2:
         //Deslogar
         session_start();
+        if (isset($_SESSION['clienteLogado'])) {
+            $cliente = $_SESSION['clienteLogado'];
+            if ($cliente['tipo'] == 'D') {
+                unset($_SESSION['clienteLogado']);
+                header("Location:../views/index.php?erro=1");
+            }
+        }
         unset($_SESSION['clienteLogado']);
-        header("Location:../views/index.php?erro=1");
+        header("Location:../views/index.php");
         break;
     case 3:
         //Cadastrar cliente
