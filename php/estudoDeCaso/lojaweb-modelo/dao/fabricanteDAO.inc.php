@@ -49,9 +49,9 @@ class FabricanteDAO
         return $stmt->execute();
     }
 
+
     public function deleteFabricante($codigo)
     {
-        var_dump($codigo);
         $stmt = $this->con->prepare("DELETE FROM fabricantes WHERE codigo = :codigo");
         $stmt->bindValue(":codigo", $codigo);
         $stmt->execute();

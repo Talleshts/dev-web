@@ -60,7 +60,7 @@ switch ($pOpcao) {
         // Deletar fabricante
         session_start();
 
-        $codigo = $_POST['codigo'];
+        $codigo = $_REQUEST['codigo'];
 
         $fabricanteDao = new FabricanteDAO();
         $fabricanteDao->deleteFabricante($codigo);
